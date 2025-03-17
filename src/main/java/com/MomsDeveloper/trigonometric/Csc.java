@@ -4,8 +4,8 @@ import com.MomsDeveloper.BaseFunction;
 
 public class Csc extends BaseFunction{
     private Sin sin;
-    public Csc(){
-        this.sin = new Sin();
+    public Csc(Sin sin){
+        this.sin = sin;
     }
 
     public double calculate(double x, double terms) {

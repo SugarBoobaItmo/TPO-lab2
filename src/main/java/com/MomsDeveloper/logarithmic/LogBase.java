@@ -6,8 +6,8 @@ public class LogBase implements SeriesFunction{
     private Ln ln;
     private int base;
 
-    public LogBase(int base) {
-        this.ln = new Ln();
+    public LogBase(Ln ln, int base) {
+        this.ln = ln;
         this.base = base;
       }
 

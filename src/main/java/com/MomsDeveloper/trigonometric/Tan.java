@@ -6,9 +6,9 @@ public class Tan extends BaseFunction {
     private Sin sin;
     private Cos cos;
 
-    public Tan() {
-        this.sin = new Sin();
-        this.cos = new Cos();
+    public Tan(Sin sin, Cos cos) {
+        this.sin = sin;
+        this.cos = cos;
     }
 
     public double calculate(double x, double terms) {

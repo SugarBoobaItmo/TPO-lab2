@@ -5,9 +5,9 @@ import com.MomsDeveloper.BaseFunction;
 public class Cot extends BaseFunction {
     private Sin sin;
     private Cos cos;
-    public Cot(){
-        this.sin = new Sin();
-        this.cos = new Cos();
+    public Cot(Sin sin, Cos cos){
+        this.sin = sin;
+        this.cos = cos;
     }
     public double calculate(double x, double terms) {
         if (!checkParams(x, terms)) return Double.NaN;

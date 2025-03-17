@@ -7,29 +7,30 @@ import com.MomsDeveloper.trigonometric.Csc;
 import com.MomsDeveloper.trigonometric.Tan;
 import com.MomsDeveloper.logarithmic.LogBase;
 
-public class FunctionSystem extends BaseFunction{
+public class FunctionSystem extends BaseFunction {
     private Csc csc;
     private Tan tan;
     private Cos cos;
     private Cot cot;
     private Ln ln;
     private LogBase log5;
-    private LogBase log10; 
+    private LogBase log10;
     private LogBase log2;
 
-    public FunctionSystem(){
-        this.csc = new Csc();
-        this.tan = new Tan();
-        this.cos = new Cos();
-        this.cot = new Cot();
-        this.ln = new Ln();
-        this.log5 = new LogBase(5);
-        this.log10 = new LogBase(10);
-        this.log2 = new LogBase(2);
+    public FunctionSystem(Csc csc, Tan tan, Cos cos, Cot cot, Ln ln, LogBase log5, LogBase log10, LogBase log2) {
+        this.csc = csc;
+        this.tan = tan;
+        this.cos = cos;
+        this.cot = cot;
+        this.ln = ln;
+        this.log5 = log5;
+        this.log10 = log10;
+        this.log2 = log2;
     }
 
     public double calculate(double x, double terms) {
-        if (!checkParams(x, terms)) return Double.NaN;
+        if (!checkParams(x, terms))
+            return Double.NaN;
         if (x <= 0) {
             double csc_res = csc.calculate(x, terms);
             double tan_res = tan.calculate(x, terms);
@@ -48,8 +49,9 @@ public class FunctionSystem extends BaseFunction{
 
             if (denominator1 == 0 || denominator2 == 0)
                 return Double.NaN;
-    
-            return (Math.pow((log2_res * log5_res) / denominator1 * (log2_res - (ln_res - ln_res)), 3) * (log5_res / denominator2));
+
+            return (Math.pow((log2_res * log5_res) / denominator1 * (log2_res - (ln_res - ln_res)), 3)
+                    * (log5_res / denominator2));
         }
     }
 }

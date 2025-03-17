@@ -4,8 +4,8 @@ import com.MomsDeveloper.BaseFunction;
 
 public class Cos extends BaseFunction{
     private Sin sin;
-    public Cos(){
-        this.sin = new Sin();
+    public Cos(Sin sin){
+        this.sin = sin;
     }
     public double calculate(double x, double terms){
         if (!checkParams(x, terms)) return Double.NaN;

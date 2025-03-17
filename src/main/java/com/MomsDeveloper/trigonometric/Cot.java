@@ -1,8 +1,8 @@
 package com.MomsDeveloper.trigonometric;
 
-import com.MomsDeveloper.SeriesFunction;
+import com.MomsDeveloper.BaseFunction;
 
-public class Cot implements SeriesFunction{
+public class Cot extends BaseFunction {
     private Sin sin;
     private Cos cos;
     public Cot(){
@@ -10,8 +10,11 @@ public class Cot implements SeriesFunction{
         this.cos = new Cos();
     }
     public double calculate(double x, double terms) {
+        if (!checkParams(x, terms)) return Double.NaN;
         double sin_res = sin.calculate(x, terms);
         double cos_res = cos.calculate(x, terms);
+        if (Math.abs(sin_res) < 1e-3)
+            return Double.NaN;
         return cos_res / sin_res;
     }
 }

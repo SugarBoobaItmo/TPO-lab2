@@ -7,7 +7,7 @@ import com.MomsDeveloper.trigonometric.Csc;
 import com.MomsDeveloper.trigonometric.Tan;
 import com.MomsDeveloper.logarithmic.LogBase;
 
-public class FunctionSystem implements SeriesFunction{
+public class FunctionSystem extends BaseFunction{
     private Csc csc;
     private Tan tan;
     private Cos cos;
@@ -29,6 +29,7 @@ public class FunctionSystem implements SeriesFunction{
     }
 
     public double calculate(double x, double terms) {
+        if (!checkParams(x, terms)) return Double.NaN;
         if (x <= 0) {
             double csc_res = csc.calculate(x, terms);
             double tan_res = tan.calculate(x, terms);
@@ -42,7 +43,13 @@ public class FunctionSystem implements SeriesFunction{
             double log2_res = log2.calculate(x, terms);
             double ln_res = ln.calculate(x, terms);
 
-            return (Math.pow((log2_res * log5_res) / log5_res * (log2_res - (ln_res - ln_res)), 3) * (log5_res / ((log2_res + log10_res) + log2_res)));
+            double denominator1 = log5_res;
+            double denominator2 = ((log2_res + log10_res) + log2_res);
+
+            if (denominator1 == 0 || denominator2 == 0)
+                return Double.NaN;
+    
+            return (Math.pow((log2_res * log5_res) / denominator1 * (log2_res - (ln_res - ln_res)), 3) * (log5_res / denominator2));
         }
     }
 }

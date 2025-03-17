@@ -12,6 +12,14 @@ public class LogBase implements SeriesFunction{
       }
 
     public double calculate(double x, double terms) {
-        return ln.calculate(x, terms) / ln.calculate(base, terms);
+        double lnx_res = ln.calculate(x, terms);
+        double lnb_res = ln.calculate(base, terms);
+        if (lnb_res == 0) { 
+            return Double.NaN;
+        }
+        if (Double.isNaN(lnx_res) || Double.isNaN(lnb_res)) {
+            return Double.NaN;
+        }
+        return lnx_res / lnb_res;
     }
 }

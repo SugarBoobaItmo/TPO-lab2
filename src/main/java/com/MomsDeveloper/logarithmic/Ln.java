@@ -1,11 +1,12 @@
 package com.MomsDeveloper.logarithmic;
 
-import com.MomsDeveloper.SeriesFunction;
+import com.MomsDeveloper.BaseFunction;
 
-public class Ln implements SeriesFunction {
+public class Ln extends BaseFunction {
     public double calculate(double x, double terms) {
+        if (!checkParams(x, terms)) return Double.NaN;
         if (x <= 0) {
-            throw new IllegalArgumentException("ln(x) is undefined for x <= 0");
+            return Double.NaN;
         }
 
         double y = (x - 1) / (x + 1);

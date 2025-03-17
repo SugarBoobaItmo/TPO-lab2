@@ -1,18 +1,19 @@
 package com.MomsDeveloper.trigonometric;
 
-import com.MomsDeveloper.SeriesFunction;
+import com.MomsDeveloper.BaseFunction;
 
-public class Sin implements SeriesFunction{
+public class Sin extends BaseFunction{
     public double calculate(double x, double terms){
+        if (!checkParams(x, terms)) return Double.NaN;
         x = x % (2 * Math.PI); 
-        double term = x, sum = x;
+        double term = x, res = x;
         int n = 1;
         for (int i = 0; i < terms; i++) {
             term *= -x * x / ((2 * n) * (2 * n + 1));
-            sum += term;
+            res += term;
             n++;
         }
-        return sum;
+        return res;
     }
 }
 

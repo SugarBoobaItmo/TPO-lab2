@@ -11,7 +11,7 @@ public class LogBase extends BaseFunction{
         this.base = base;
       }
 
-    public double calculate(double x, double terms) {
+    public double calculate(double x, int terms) {
         if (!checkParams(x, terms)) return Double.NaN;
         double lnx_res = ln.calculate(x, terms);
         double lnb_res = ln.calculate(base, terms);

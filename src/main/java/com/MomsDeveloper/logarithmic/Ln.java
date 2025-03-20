@@ -3,7 +3,7 @@ package com.MomsDeveloper.logarithmic;
 import com.MomsDeveloper.BaseFunction;
 
 public class Ln extends BaseFunction {
-    public double calculate(double x, double terms) {
+    public double calculate(double x, int terms) {
         if (!checkParams(x, terms)) return Double.NaN;
         if (x <= 0) {
             return Double.NaN;

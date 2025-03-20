@@ -7,9 +7,14 @@ public class Cos extends BaseFunction{
     public Cos(Sin sin){
         this.sin = sin;
     }
-    public double calculate(double x, double terms){
-        if (!checkParams(x, terms)) return Double.NaN;
-        double result = sin.calculate(x + Math.PI / 2, terms);
+    public double calculate(double x, int terms){
+        if (!checkParams(x, terms)) return Double.NaN;   
+        x = normalize(x + Math.PI / 2);
+        double result = sin.calculate(x, terms);
         return result;
+    }
+
+    private double normalize(double x){
+        return ((x % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
     }
 }

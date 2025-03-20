@@ -11,7 +11,7 @@ public class Tan extends BaseFunction {
         this.cos = cos;
     }
 
-    public double calculate(double x, double terms) {
+    public double calculate(double x, int terms) {
         if (!checkParams(x, terms)) return Double.NaN;
         double sin_res = sin.calculate(x, terms);
         double cos_res = cos.calculate(x, terms);

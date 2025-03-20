@@ -8,7 +8,7 @@ public class Csc extends BaseFunction{
         this.sin = sin;
     }
 
-    public double calculate(double x, double terms) {
+    public double calculate(double x, int terms) {
         if (!checkParams(x, terms)) return Double.NaN;  
         double res = sin.calculate(x, terms);
         if (Math.abs(res) < 1e-3)

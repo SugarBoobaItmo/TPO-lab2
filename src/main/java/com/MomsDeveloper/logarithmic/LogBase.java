@@ -1,8 +1,8 @@
 package com.MomsDeveloper.logarithmic;
 
-import com.MomsDeveloper.SeriesFunction;
+import com.MomsDeveloper.BaseFunction;
 
-public class LogBase implements SeriesFunction{
+public class LogBase extends BaseFunction{
     private Ln ln;
     private int base;
 
@@ -12,6 +12,7 @@ public class LogBase implements SeriesFunction{
       }
 
     public double calculate(double x, double terms) {
+        if (!checkParams(x, terms)) return Double.NaN;
         double lnx_res = ln.calculate(x, terms);
         double lnb_res = ln.calculate(base, terms);
         if (lnb_res == 0) { 

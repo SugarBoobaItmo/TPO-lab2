@@ -127,7 +127,7 @@ public class Mocks {
             return -1.0;
         if (x == -Math.PI / 4)
             return -Math.sqrt(2) / 2;
-        return Math.sin(x);
+        return Double.NaN;
     }
 
     private static double mockCosValue(double x) {
@@ -157,7 +157,7 @@ public class Mocks {
             return 0.0;
         if (x == -Math.PI / 4)
             return Math.sqrt(2) / 2;
-        return Math.cos(x);
+        return Double.NaN;
     }
 
     private static double mockTanValue(double x) {
@@ -292,11 +292,34 @@ public class Mocks {
         return Math.log10(x);
     }
 
+    private static double mockTrigFunction(double x) {
+        double csc_res = mockCscValue(x);
+        double tan_res = mockTanValue(x);
+        double cos_res = mockCosValue(x);
+        double cot_res = mockCotValue(x);
+
+        return (csc_res * tan_res) * (cos_res * cot_res);
+    }
+
+    private static double mockLogFunction(double x) {
+        double log5_res = mockLog5Value(x);
+        double log10_res = mockLog10Value(x);
+        double log2_res = mockLog2Value(x);
+        double ln_res = mockLnValue(x);
+
+        double denominator1 = log5_res;
+        double denominator2 = ((log2_res + log10_res) + log2_res);
+
+        if (denominator1 == 0 || denominator2 == 0)
+            return Double.NaN;
+
+        return (Math.pow((log2_res * log5_res) / denominator1 * (log2_res - (ln_res - ln_res)), 3)
+                * (log5_res / denominator2));
+    }
+
     private static double mockFunctionSystemValue(double x) {
-        if (x == 0)
-            return Double.NaN;
         if (x <= 0)
-            return Double.NaN;
-        return Double.NaN;        
+            return mockTrigFunction(x);
+        return mockLogFunction(x);
     }
 }

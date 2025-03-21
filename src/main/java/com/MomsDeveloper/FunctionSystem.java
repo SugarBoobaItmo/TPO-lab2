@@ -36,6 +36,10 @@ public class FunctionSystem extends BaseFunction {
             double tan_res = tan.calculate(x, terms);
             double cos_res = cos.calculate(x, terms);
             double cot_res = cot.calculate(x, terms);
+            System.out.println("csc_res: " + csc_res);
+            System.out.println("tan_res: " + tan_res);
+            System.out.println("cos_res: " + cos_res);
+            System.out.println("cot_res: " + cot_res);
 
             return (csc_res * tan_res) * (cos_res * cot_res);
         } else {

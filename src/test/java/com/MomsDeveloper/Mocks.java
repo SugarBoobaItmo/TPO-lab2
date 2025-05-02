@@ -127,7 +127,7 @@ public class Mocks {
             return -1.0;
         if (x == -Math.PI / 4)
             return -Math.sqrt(2) / 2;
-        return Double.NaN;
+        return Math.sin(x);
     }
 
     private static double mockCosValue(double x) {
@@ -157,7 +157,7 @@ public class Mocks {
             return 0.0;
         if (x == -Math.PI / 4)
             return Math.sqrt(2) / 2;
-        return Double.NaN;
+        return Math.cos(x);
     }
 
     private static double mockTanValue(double x) {
